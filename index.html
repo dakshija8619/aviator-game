@@ -1,35 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Aviator Free Coin Game</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial; text-align:center; background:#111; color:#fff; }
-    button { padding:15px 30px; font-size:18px; background:#28a745; border:none; color:white; border-radius:8px; }
-    #plane { font-size:40px; margin-top:20px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aviator Demo – Fly & Win</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #0b0f2f, #000);
+    color: #fff;
+    text-align: center;
+}
+header {
+    padding: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffcc00;
+}
+.plane {
+    font-size: 60px;
+    animation: fly 3s infinite linear;
+}
+@keyframes fly {
+    0% { transform: translateX(-120px); }
+    100% { transform: translateX(120px); }
+}
+.multiplier {
+    font-size: 48px;
+    margin: 20px 0;
+    color: #00ffcc;
+}
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #ff3b3b;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-top: 20px;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+.note {
+    font-size: 12px;
+    color: #ccc;
+    margin-top: 30px;
+    padding: 0 15px;
+}
+</style>
 </head>
+
 <body>
 
-<h1>✈️ Aviator Free Coin Game</h1>
-<p>Multiplier: <span id="multi">1.00x</span></p>
-<div id="plane">✈️</div>
+<header>✈️ Aviator Demo Game</header>
 
-<button onclick="start()">START</button>
+<div class="plane">✈️</div>
+
+<div class="multiplier" id="multi">1.00x</div>
+
+<a href="https://wa.me/917880254157" class="btn">Play Now</a>
+
+<div class="note">
+This is a demo / entertainment landing page.<br>
+No real money involved.
+</div>
 
 <script>
-let m = 1;
-function start(){
-  m = 1;
-  let i = setInterval(()=>{
-    m += 0.05;
-    document.getElementById("multi").innerText = m.toFixed(2)+"x";
-    if(m > (Math.random()*5+1)){
-      clearInterval(i);
-      alert("💥 Plane Fly Away!");
-    }
-  },200);
-}
+let m = 1.00;
+setInterval(() => {
+    m += 0.07;
+    if (m > 10) m = 1.00;
+    document.getElementById("multi").innerText = m.toFixed(2) + "x";
+}, 200);
 </script>
 
 </body>
